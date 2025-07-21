@@ -6,15 +6,15 @@ on:
 jobs:
   redeploy_everything:
     name: Deploying everything to the staging cluster
-
+    runs-on: ubuntu-latest
     steps:
-      - name: SSH Into server
-      - run: |
-          echo ${{secrets.SSH_PRIVATE_KEY}} &> /ssh_key
-          ssh -i /ssh_key ubuntu@3.110.122.67
-          cd devops/ && git pull
-          pnpm install
-          pnpm run build
-          pm2 restart fe-server
-          pm2 restart http-server
-          pm2 restart ws-server
+      name: SSH Into server
+      run: |
+        echo ${{secrets.SSH_PRIVATE_KEY}} &> /ssh_key
+        ssh -i /ssh_key ubuntu@3.110.122.67
+        cd devops/ && git pull
+        pnpm install
+        pnpm run build
+        pm2 restart fe-server
+        pm2 restart http-server
+        pm2 restart ws-server
