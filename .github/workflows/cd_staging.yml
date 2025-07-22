@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "${{secrets.SSH_PRIVATE_KEY}}" &> /ssh_key
-          chmod 600 /ssh_key
-          ssh -i /ssh_key ubuntu@3.110.122.67
+          echo "${{secrets.SSH_PRIVATE_KEY}}" &> ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh -i ~/.ssh/id_rsa ubuntu@3.110.122.67
           cd devops/ && git pull
           pnpm install
           pnpm run build
