@@ -13,7 +13,7 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/id_rsa
-          ssh -i ~/.ssh/id_rsa ubuntu@3.110.122.67 << 'EOF'
+          ssh -i ~/.ssh/id_rsa ubuntu@65.0.61.156 << 'EOF'
           set -e
           cd devops/ && 
           git reset --hard origin/main &&
