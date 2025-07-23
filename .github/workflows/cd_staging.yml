@@ -16,6 +16,7 @@ jobs:
           ssh -i ~/.ssh/id_rsa ubuntu@3.110.122.67 -t "cd devops/ && git pull origin main &&
           pnpm install &&
           pnpm run build &&
+          git commit -m "file changes" &&
           pm2 restart fe-server &&
           pm2 restart http-server &&
           pm2 restart ws-server"
