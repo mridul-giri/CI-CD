@@ -24,5 +24,7 @@ jobs:
           pnpm run build &&
           pm2 restart fe-server &&
           pm2 restart http-server &&
-          pm2 restart ws-server
+          pm2 restart ws-server &&
+          sudo nginx -t &&
+          sudo nginx -s reload
           EOF
