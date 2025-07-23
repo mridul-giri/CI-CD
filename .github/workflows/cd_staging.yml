@@ -16,6 +16,7 @@ jobs:
           ssh -i ~/.ssh/id_rsa ubuntu@3.110.122.67 -t "cd devops/ && 
           git reset --hard origin/main &&
           git clean -fd && git pull origin main &&
+          export PATH=/home/ubuntu/.nvm/versions/node/v22.17.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin &&
           npm install -g pnpm &&
           pnpm install &&
           pnpm run build &&
